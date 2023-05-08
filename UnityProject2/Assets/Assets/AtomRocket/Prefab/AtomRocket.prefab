@@ -509,6 +509,8 @@ GameObject:
   - component: {fileID: 811222215694539037}
   - component: {fileID: 471105322}
   - component: {fileID: 6772058603289154316}
+  - component: {fileID: 471105323}
+  - component: {fileID: 471105324}
   m_Layer: 0
   m_Name: AtomRocket
   m_TagString: Untagged
@@ -613,6 +615,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5705395831ed74580f6ec759fe1893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 100
+--- !u!54 &471105323
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854619882081110099}
+  serializedVersion: 2
+  m_Mass: 0.1
+  m_Drag: 0.2
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &471105324
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854619882081110099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 6.5, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8972606480291121315
 GameObject:
   m_ObjectHideFlags: 0

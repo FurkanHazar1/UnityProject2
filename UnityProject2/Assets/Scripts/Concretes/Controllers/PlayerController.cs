@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityProject2.Inputs;
+using UnityProject2.movments;
+
 
 namespace UnityProject2.controller
 {
     public class PlayerController : MonoBehaviour
     {
-        Rigidbody rb;
-        DefaultInput input;
 
+        DefaultInput input;
+        Mover mover;
 
         private bool isForceUp;
-        [SerializeField] float force;
 
 
         private void Awake()
         {
 
-            rb = GetComponent<Rigidbody>();
+            mover = new Mover(GetComponent<Rigidbody>());
             input = new DefaultInput();
         }
         private void Update()
@@ -36,7 +37,7 @@ namespace UnityProject2.controller
         {
             if (isForceUp)
             {
-                rb.AddForce(Vector3.up * Time.deltaTime * force);
+                mover.FixedTick();
             }
         }
     }
