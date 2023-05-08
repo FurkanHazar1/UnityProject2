@@ -23,6 +23,8 @@ namespace UnityProject2.movments
                 if (rb.freezeRotation) rb.freezeRotation = false;
                 return;
             }
+
+            if (!rb.freezeRotation) rb.freezeRotation = true;
             playerController.transform.Rotate(Vector3.back * Time.deltaTime * leftRight * playerController.turnSpeed);
 
         }
