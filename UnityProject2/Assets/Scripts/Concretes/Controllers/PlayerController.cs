@@ -13,12 +13,16 @@ namespace UnityProject2.controller
         DefaultInput input;
         Mover mover;
         Rotater rotater;
+        Fuel fuel;
+   
 
-
-        private bool isForceUp;
+        private bool canForceUp;
         public float leftRight;
 
-        public float turnSpeed= 50f;
+
+       [SerializeField] private float increase = 0.5f;
+       [SerializeField] private float decrease = 2f;
+        public float turnSpeed = 50f;
         public float force = 75;
 
         private void Awake()
@@ -26,26 +30,30 @@ namespace UnityProject2.controller
             rotater = new Rotater(this);
             mover = new Mover(this);
             input = new DefaultInput();
+            fuel = GetComponent<Fuel>();
         }
         private void Update()
         {
-            Debug.Log(input.leftRight);
-            if (input.isForcedUp)
+          
+            if (input.isForcedUp && !fuel.isEmpty)
             {
-                isForceUp = true;
+                canForceUp = true;
+                
             }
             else
             {
-                isForceUp = false;
+                canForceUp = false;
+                fuel.fuelIncrease(increase);
             }
 
             leftRight = input.leftRight;
         }
         private void FixedUpdate()
         {
-            if (isForceUp)
+            if (canForceUp)
             {
                 mover.FixedTick();
+                fuel.fuelDecrease(decrease);
             }
             rotater.FixedTick(leftRight);    
         }
