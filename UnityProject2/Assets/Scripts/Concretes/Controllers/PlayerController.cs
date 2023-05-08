@@ -12,18 +12,24 @@ namespace UnityProject2.controller
 
         DefaultInput input;
         Mover mover;
+        Rotater rotater;
+
 
         private bool isForceUp;
+        public float leftRight;
 
+        public float turnSpeed= 50f;
+        public float force = 75;
 
         private void Awake()
         {
-
-            mover = new Mover(GetComponent<Rigidbody>());
+            rotater = new Rotater(this);
+            mover = new Mover(this);
             input = new DefaultInput();
         }
         private void Update()
         {
+            Debug.Log(input.leftRight);
             if (input.isForcedUp)
             {
                 isForceUp = true;
@@ -32,6 +38,8 @@ namespace UnityProject2.controller
             {
                 isForceUp = false;
             }
+
+            leftRight = input.leftRight;
         }
         private void FixedUpdate()
         {
@@ -39,6 +47,7 @@ namespace UnityProject2.controller
             {
                 mover.FixedTick();
             }
+            rotater.FixedTick(leftRight);    
         }
     }
 

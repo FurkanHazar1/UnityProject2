@@ -37,6 +37,15 @@ namespace UnityProject2.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftRight"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""7baf8055-457a-4016-a813-ad12e94782a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -50,6 +59,39 @@ namespace UnityProject2.Inputs
                     ""action"": ""ForceUP"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""AD"",
+                    ""id"": ""890c759d-bdc6-4d92-b5bd-087b3811c78b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftRight"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""63be2ac1-ec86-4515-a26b-aeb0ef77fd25"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8c185bea-b8f9-45b9-9738-9905d26b6ed1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -59,6 +101,7 @@ namespace UnityProject2.Inputs
             // Rocket
             m_Rocket = asset.FindActionMap("Rocket", throwIfNotFound: true);
             m_Rocket_ForceUP = m_Rocket.FindAction("ForceUP", throwIfNotFound: true);
+            m_Rocket_LeftRight = m_Rocket.FindAction("LeftRight", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -121,11 +164,13 @@ namespace UnityProject2.Inputs
         private readonly InputActionMap m_Rocket;
         private List<IRocketActions> m_RocketActionsCallbackInterfaces = new List<IRocketActions>();
         private readonly InputAction m_Rocket_ForceUP;
+        private readonly InputAction m_Rocket_LeftRight;
         public struct RocketActions
         {
             private @DefaultAction m_Wrapper;
             public RocketActions(@DefaultAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @ForceUP => m_Wrapper.m_Rocket_ForceUP;
+            public InputAction @LeftRight => m_Wrapper.m_Rocket_LeftRight;
             public InputActionMap Get() { return m_Wrapper.m_Rocket; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -138,6 +183,9 @@ namespace UnityProject2.Inputs
                 @ForceUP.started += instance.OnForceUP;
                 @ForceUP.performed += instance.OnForceUP;
                 @ForceUP.canceled += instance.OnForceUP;
+                @LeftRight.started += instance.OnLeftRight;
+                @LeftRight.performed += instance.OnLeftRight;
+                @LeftRight.canceled += instance.OnLeftRight;
             }
 
             private void UnregisterCallbacks(IRocketActions instance)
@@ -145,6 +193,9 @@ namespace UnityProject2.Inputs
                 @ForceUP.started -= instance.OnForceUP;
                 @ForceUP.performed -= instance.OnForceUP;
                 @ForceUP.canceled -= instance.OnForceUP;
+                @LeftRight.started -= instance.OnLeftRight;
+                @LeftRight.performed -= instance.OnLeftRight;
+                @LeftRight.canceled -= instance.OnLeftRight;
             }
 
             public void RemoveCallbacks(IRocketActions instance)
@@ -165,6 +216,7 @@ namespace UnityProject2.Inputs
         public interface IRocketActions
         {
             void OnForceUP(InputAction.CallbackContext context);
+            void OnLeftRight(InputAction.CallbackContext context);
         }
     }
 }
