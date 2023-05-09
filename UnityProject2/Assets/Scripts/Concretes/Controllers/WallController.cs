@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityProject2.managers;
 
 namespace UnityProject2.controller
 {
@@ -13,7 +13,7 @@ namespace UnityProject2.controller
             PlayerController player = collision.collider.GetComponent<PlayerController>();
             if (player != null)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                GameManager.instance.gameOver(); 
             }
         }
     }

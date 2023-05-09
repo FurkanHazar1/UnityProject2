@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityProject2.Inputs;
 using UnityProject2.movments;
-
+using UnityProject2.managers;
 
 namespace UnityProject2.controller
 {
@@ -14,8 +14,9 @@ namespace UnityProject2.controller
         Mover mover;
         Rotater rotater;
         Fuel fuel;
-   
 
+
+        private bool canMove;
         private bool canForceUp;
         public float leftRight;
 
@@ -32,9 +33,22 @@ namespace UnityProject2.controller
             input = new DefaultInput();
             fuel = GetComponent<Fuel>();
         }
+        private void OnEnable()
+        {
+            GameManager.instance.onGameOver += gameTrigger;
+        }
+        private void OnDisable()
+        {
+            GameManager.instance.onGameOver -= gameTrigger;
+        }
+        private void Start()
+        {
+            canMove = true;
+        }
         private void Update()
         {
-          
+            if (!canMove) return;
+
             if (input.isForcedUp && !fuel.isEmpty)
             {
                 canForceUp = true;
@@ -56,6 +70,14 @@ namespace UnityProject2.controller
                 fuel.fuelDecrease(decrease);
             }
             rotater.FixedTick(leftRight);    
+        }
+        public void gameTrigger()
+        {
+            canMove = false;
+            canForceUp = false;
+            leftRight = 0f;
+            fuel.fuelIncrease(0);
+
         }
     }
 
