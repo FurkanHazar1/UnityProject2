@@ -36,10 +36,12 @@ namespace UnityProject2.controller
         private void OnEnable()
         {
             GameManager.instance.onGameOver += gameTrigger;
+            GameManager.instance.onSucced += gameTrigger;
         }
         private void OnDisable()
         {
             GameManager.instance.onGameOver -= gameTrigger;
+            GameManager.instance.onSucced -= gameTrigger;
         }
         private void Start()
         {

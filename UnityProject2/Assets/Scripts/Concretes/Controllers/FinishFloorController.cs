@@ -19,7 +19,7 @@ namespace UnityProject2.controller
             if (collision.GetContact(0).normal.y == -1)
             {
                 finishFloorParticle.gameObject.SetActive(true);
-            
+                GameManager.instance.Succed();
                 isFinished = true;
             }
             else
