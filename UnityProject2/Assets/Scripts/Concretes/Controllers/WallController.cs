@@ -11,7 +11,7 @@ namespace UnityProject2.controller
         private void OnCollisionEnter(Collision collision)
         {
             PlayerController player = collision.collider.GetComponent<PlayerController>();
-            if (player != null)
+            if (player != null && player.CanMove)
             {
                 GameManager.instance.gameOver(); 
             }

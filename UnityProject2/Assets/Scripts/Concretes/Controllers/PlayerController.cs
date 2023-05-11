@@ -16,6 +16,7 @@ namespace UnityProject2.controller
         Fuel fuel;
 
 
+        public bool CanMove => canMove;
         private bool canMove;
         private bool canForceUp;
         public float leftRight;

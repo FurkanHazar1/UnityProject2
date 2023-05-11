@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityProject2.managers;
-
+using UnityProject2.controller;
 namespace UnityProject2.ui
 {
     public class SuccedObject : MonoBehaviour
     {
-        [SerializeField]GameObject succedObject;
+        [SerializeField] GameObject succedObject;
+     
         private void Awake()
-        {
+        { 
             if (succedObject.activeSelf)
             {
                 succedObject.SetActive(false);
             }
+
+           
         }
         private void OnEnable()
         {
@@ -26,6 +29,8 @@ namespace UnityProject2.ui
 
         public void handleObject()
         {
+            if (!succedObject.activeSelf)
+
             succedObject.SetActive(true);
         }
 
