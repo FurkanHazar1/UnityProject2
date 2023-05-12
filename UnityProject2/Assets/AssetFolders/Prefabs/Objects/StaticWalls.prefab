@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1488621825706840579}
   m_Layer: 0
-  m_Name: Walls
+  m_Name: StaticWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,8 +300,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1242811537494522117, guid: 84ac794fdbadcc04e8d3f4b75d643493, type: 3}
+    - {fileID: -298684628689897462, guid: 84ac794fdbadcc04e8d3f4b75d643493, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 84ac794fdbadcc04e8d3f4b75d643493, type: 3}
+--- !u!1 &1412245311423021815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6237901944690160222, guid: 84ac794fdbadcc04e8d3f4b75d643493, type: 3}
+  m_PrefabInstance: {fileID: 4974286691334172841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7281765475686765946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412245311423021815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727d244b1f439f9419f55a1297349c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3016933468296546434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7842590376515909675, guid: 84ac794fdbadcc04e8d3f4b75d643493, type: 3}
