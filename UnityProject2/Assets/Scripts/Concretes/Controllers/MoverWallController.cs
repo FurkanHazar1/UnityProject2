@@ -10,10 +10,11 @@ namespace UnityProject2.controller
     public class MoverWallController : WallController
     {
         [SerializeField] Vector3 direction;
-
         [Range(0,1)][SerializeField] float range;
         [SerializeField] float slowSpeed=10;
+        
         Vector3 startPosition;
+
         const float fullCircle = Mathf.PI * 2f; 
         private void Awake()
         {
@@ -24,7 +25,9 @@ namespace UnityProject2.controller
         {
             float circle = Time.time / slowSpeed;
             float sinWave = Mathf.Sin(circle * fullCircle);
-            range = Mathf.Abs(sinWave);
+            
+            range = sinWave / 2 + 0.5f;
+            
             Vector3 offset = direction * range;
             transform.position = offset + startPosition;
         }

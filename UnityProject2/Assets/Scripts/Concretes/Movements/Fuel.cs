@@ -10,7 +10,7 @@ namespace UnityProject2.movments
         
         [SerializeField] ParticleSystem particle;
         public bool isEmpty => currentFuel < 1;
-
+        public float CurrentFuel => currentFuel/maxFuel;
         [SerializeField] float maxFuel=100;
         [SerializeField] float minFuel=0;
 
