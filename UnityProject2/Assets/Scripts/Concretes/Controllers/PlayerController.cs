@@ -22,8 +22,8 @@ namespace UnityProject2.controller
         public float leftRight;
 
 
-       [SerializeField] private float increase = 0.5f;
-       [SerializeField] private float decrease = 2f;
+       [SerializeField] private float increase = 0.1f;
+       [SerializeField] private float decrease = 0.3f;
         public float turnSpeed = 50f;
         public float force = 75;
 
